@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DLCollection"
         mc:Ignorable="d"
-        AllowsTransparency="True"
-        Title="Menu" Height="508.281" Width="394.92" WindowStyle="None">
+        Style="{StaticResource DefaultWindowStyle}"
+        Title="Menu" Height="508.281" Width="394.92">
+
     <Grid Background="{StaticResource PrimaryBgBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="20*"/>
@@ -18,6 +19,7 @@
                 <ColumnDefinition Width="620*"/>
                 <ColumnDefinition Width="120*"/>
             </Grid.ColumnDefinitions>
+
             <Button x:Name="cmdExit" Grid.Column="1" Style="{StaticResource CloseButtonStyle}" 
                      Click="CmdExit_Click" RenderTransformOrigin="0.5,0.5">
             </Button>

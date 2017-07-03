@@ -5,6 +5,8 @@
     <!-- =Generic Colors= -->
     <Color x:Key="CloseButtonColor0">#2980b9</Color>
     <Color x:Key="CloseButtonColor1">#f44336</Color>
+    <Color x:Key="BackButtonColor0">#2980b9</Color>
+    <Color x:Key="BackButtonColor1">#2ecc71</Color>
 
     <!-- =Generic Brushes= -->
     <SolidColorBrush x:Key="PrimaryBgBrush" Color="#ecf0f1"/>
@@ -15,6 +17,8 @@
     <SolidColorBrush x:Key="ActionBarBrush" Color="#3498db"/>
     <SolidColorBrush x:Key="CloseButtonBrush0" Color="{StaticResource CloseButtonColor0}"/>
     <SolidColorBrush x:Key="CloseButtonBrush1" Color="{StaticResource CloseButtonColor1}"/>
+    <SolidColorBrush x:Key="BackButtonBrush0" Color="{StaticResource BackButtonColor0}"/>
+    <SolidColorBrush x:Key="BackButtonBrush1" Color="{StaticResource BackButtonColor1}"/>
 
     <SolidColorBrush x:Key="TransparentBrush" Color="#00FFFFFF"/>
     <SolidColorBrush x:Key="UnfocusedBtnTextBrush" Color="#FF4C4C4C"/>
@@ -36,8 +40,8 @@
         </Border>
     </ControlTemplate>
 
-    <!-- Close button -->
-    <ControlTemplate x:Key="CloseButtonTemplate" TargetType="Button">
+    <!-- Util button -->
+    <ControlTemplate x:Key="UtilButtonTemplate" TargetType="Button">
         <Border
 			    Padding="{TemplateBinding Padding}"
                 Margin="{TemplateBinding Margin}"
@@ -101,7 +105,7 @@
             <Setter Property="Padding" Value="0"/>
             <Setter Property="MinWidth" Value="10"/>
             <Setter Property="MinHeight" Value="10"/>
-            <Setter Property="Template" Value="{StaticResource CloseButtonTemplate}"/>
+            <Setter Property="Template" Value="{StaticResource UtilButtonTemplate}"/>
         </Style.Setters>
         <Style.Triggers>
             <EventTrigger RoutedEvent="MouseEnter">
@@ -131,15 +135,62 @@
         </Style.Triggers>
     </Style>
 
+    <!-- Back button -->
+    <Style x:Key="BackButtonStyle" TargetType="Button">
+        <Style.Setters>
+            <Setter Property="Background" Value="{DynamicResource CloseButtonBrush0}"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="RenderTransformOrigin" Value="1,0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="MinWidth" Value="10"/>
+            <Setter Property="MinHeight" Value="10"/>
+            <Setter Property="Template" Value="{StaticResource UtilButtonTemplate}"/>
+        </Style.Setters>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation
+                                Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                To="{StaticResource BackButtonColor1}"
+                                Duration="0:0:0.2"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation
+                                Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                To="{StaticResource BackButtonColor0}"
+                                Duration="0:0:0.4"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
     <!-- Text block -->
     <Style x:Key="MainTextBlockStyle" TargetType="TextBlock">
         <Style.Setters>
-            <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
-            <Setter Property="Foreground" Value="{DynamicResource UnfocusedBtnTextBrush}"/>
+            <Setter Property="Background" Value="{StaticResource TransparentBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource UnfocusedBtnTextBrush}"/>
             <Setter Property="FontFamily" Value="Square721 BT"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
             <Setter Property="Padding" Value="0,4,0,5"/>
+        </Style.Setters>
+    </Style>
+
+    <!-- Default Window -->
+    <Style x:Key="DefaultWindowStyle" TargetType="Window">
+        <Style.Setters>
+            <Setter Property="AllowsTransparency" Value="True"/>
+            <Setter Property="WindowStyle" Value="None"/>
         </Style.Setters>
     </Style>
 

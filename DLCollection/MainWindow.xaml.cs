@@ -23,6 +23,13 @@ namespace DLCollection
         public MainWindow()
         {
             InitializeComponent();
+            Topmost = true;
+            Loaded += (s, e) => OnLoaded();
+        }
+
+        private void OnLoaded()
+        {
+            Topmost = false;
         }
 
         private void GrdActionBar_MouseDown(object sender, MouseButtonEventArgs e)
@@ -39,12 +46,14 @@ namespace DLCollection
         {
             var wind = new FaceMain() { Topmost = true };
             wind.Show();
+            Close();
         }
 
         private void StreetBtn_Click(object sender, RoutedEventArgs e)
         {
             var wind = new StreetMain() { Topmost = true };
             wind.Show();
+            Close();
         }
     }
 }

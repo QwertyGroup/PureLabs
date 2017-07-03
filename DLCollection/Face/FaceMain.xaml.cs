@@ -26,8 +26,28 @@ namespace DLCollection.Face
 
         private void InitializeControls()
         {
-            grdContainer2.Children.Add(new LoadingPicture());
-            grdContainer1.Children.Add(new LoadingCIrcle());
+            Topmost = false;
+
+            grdContainer0.Children.Add(new DirectionViewer3D { Photo = DirectionViewer3D.LoadPhotoFromFile("Photos/Dasha.jpg") });
+            //grdContainer1.Children.Add(new LoadingCIrcle());
+            grdContainer2.Children.Add(new LoadingPicture { Padding = new Thickness(0, 15, 0, 30) });
+        }
+
+        private void CmdExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void CmdBack_Click(object sender, RoutedEventArgs e)
+        {
+            var wind = new MainWindow() { Topmost = true };
+            wind.Show();
+            Close();
+        }
+
+        private void GrdActionBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

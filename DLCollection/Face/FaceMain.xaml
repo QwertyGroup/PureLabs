@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DLCollection.Face"
         mc:Ignorable="d"
-        Title="FaceMain" Height="450" Width="1200">
+        Style="{StaticResource DefaultWindowStyle}"
+        Title="FaceMain" Height="484.222" Width="1345.149">
     <Grid Background="{StaticResource PrimaryBgBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
             <RowDefinition Height="30*"/>
             <RowDefinition Height="300*"/>
         </Grid.RowDefinitions>
@@ -16,23 +18,40 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock x:Name="tbResult0" Grid.Row="0" Grid.Column="0" 
+        <Grid x:Name="grdActionBar" Grid.ColumnSpan="3"
+              Grid.Row="0" Background="{StaticResource ActionBarBrush}" MouseDown="GrdActionBar_MouseDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60*"/>
+                <ColumnDefinition Width="620*"/>
+                <ColumnDefinition Width="60*"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="cmdBack" Grid.Column="0" Style="{StaticResource BackButtonStyle}" 
+                     Click="CmdBack_Click" RenderTransformOrigin="0.5,0.5">
+            </Button>
+
+            <Button x:Name="cmdExit" Grid.Column="2" Style="{StaticResource CloseButtonStyle}" 
+                     Click="CmdExit_Click" RenderTransformOrigin="0.5,0.5">
+            </Button>
+        </Grid>
+
+        <TextBlock x:Name="tbResult0" Grid.Row="1" Grid.Column="0" 
                    Text="Result1" Style="{StaticResource MainTextBlockStyle}" 
                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock x:Name="tbResult1" Grid.Row="0" Grid.Column="1"
+        <TextBlock x:Name="tbResult1" Grid.Row="1" Grid.Column="1"
                    Text="Result2" Style="{StaticResource MainTextBlockStyle}" 
                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock x:Name="tbResult2" Grid.Row="0" Grid.Column="2" 
+        <TextBlock x:Name="tbResult2" Grid.Row="1" Grid.Column="2" 
                    Text="Result3" Style="{StaticResource MainTextBlockStyle}" 
                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Grid x:Name="grdContainer0"
-              Grid.Row="1" Grid.Column="0"
+              Grid.Row="2" Grid.Column="0"
               VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
         <Grid x:Name="grdContainer1"
-              Grid.Row="1" Grid.Column="1"
+              Grid.Row="2" Grid.Column="1"
               VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
         <Grid x:Name="grdContainer2"
-              Grid.Row="1" Grid.Column="2"
+              Grid.Row="2" Grid.Column="2"
               VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
     </Grid>
 </Window>
