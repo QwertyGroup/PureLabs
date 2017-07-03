@@ -56,6 +56,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfAnimatedGif, Version=1.4.14.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WpfAnimatedGif.1.4.14\lib\net\WpfAnimatedGif.dll</HintPath>
+    </Reference>
     <Reference Include="ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
       <HintPath>..\packages\ZedGraph.5.1.5\lib\ZedGraph.dll</HintPath>
     </Reference>
@@ -65,9 +68,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Face\DirectionViewer3D.xaml.cs">
+      <DependentUpon>DirectionViewer3D.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Street\StreetMain.xaml.cs">
       <DependentUpon>StreetMain.xaml</DependentUpon>
     </Compile>
+    <Page Include="Face\DirectionViewer3D.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Face\FaceMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

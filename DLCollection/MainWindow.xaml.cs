@@ -37,12 +37,14 @@ namespace DLCollection
 
         private void FaceBtn_Click(object sender, RoutedEventArgs e)
         {
-            new FaceMain().Show();
+            var wind = new FaceMain() { Topmost = true };
+            wind.Show();
         }
 
         private void StreetBtn_Click(object sender, RoutedEventArgs e)
         {
-            new StreetMain().Show();
+            var wind = new StreetMain() { Topmost = true };
+            wind.Show();
         }
     }
 }

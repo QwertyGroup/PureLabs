@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DLCollection.Face"
         mc:Ignorable="d"
-        Title="FaceMain" Height="370" Width="900">
+        Title="FaceMain" Height="450" Width="1200">
     <Grid Background="{StaticResource PrimaryBgBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="30*"/>
@@ -19,7 +19,7 @@
         <TextBlock x:Name="tbResult0" Grid.Row="0" Grid.Column="0" 
                    Text="Result1" Style="{StaticResource MainTextBlockStyle}" 
                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBlock x:Name="tbResult1" Grid.Row="0" Grid.Column="1" 
+        <TextBlock x:Name="tbResult1" Grid.Row="0" Grid.Column="1"
                    Text="Result2" Style="{StaticResource MainTextBlockStyle}" 
                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock x:Name="tbResult2" Grid.Row="0" Grid.Column="2" 

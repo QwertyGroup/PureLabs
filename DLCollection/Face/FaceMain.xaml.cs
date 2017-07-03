@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Tools.UI;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,14 +16,18 @@ using System.Windows.Shapes;
 
 namespace DLCollection.Face
 {
-    /// <summary>
-    /// Interaction logic for FaceMain.xaml
-    /// </summary>
     public partial class FaceMain : Window
     {
         public FaceMain()
         {
             InitializeComponent();
+            Loaded += (s, e) => InitializeControls();
+        }
+
+        private void InitializeControls()
+        {
+            grdContainer2.Children.Add(new LoadingPicture());
+            grdContainer1.Children.Add(new LoadingCIrcle());
         }
     }
 }
