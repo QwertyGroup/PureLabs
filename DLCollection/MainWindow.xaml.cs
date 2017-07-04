@@ -1,5 +1,6 @@
 ﻿using DLCollection.Face;
 using DLCollection.Street;
+using DLCollection.MSvsCV;
 
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,13 @@ namespace DLCollection
         private void StreetBtn_Click(object sender, RoutedEventArgs e)
         {
             var wind = new StreetMain() { Topmost = true };
+            wind.Show();
+            Close();
+        }
+
+        private void MSvsCVBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var wind = new MSvsCVMain() { Topmost = true };
             wind.Show();
             Close();
         }

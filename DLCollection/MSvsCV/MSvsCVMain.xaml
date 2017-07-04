@@ -1,18 +1,17 @@
-﻿<Window x:Class="DLCollection.Street.StreetMain"
+﻿<Window x:Class="DLCollection.MSvsCV.MSvsCVMain"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DLCollection.Street"
+        xmlns:local="clr-namespace:DLCollection.MSvsCV"
         mc:Ignorable="d"
         Style="{StaticResource DefaultWindowStyle}"
-        Title="StreetMain" Height="300" Width="300">
-    <Grid  Background="{StaticResource PrimaryBgBrush}">
+        Title="MSvsCVMain" Height="300" Width="300">
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="5*"/>
-            <RowDefinition Height="70*"/>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="127*"/>
         </Grid.RowDefinitions>
-
         <Grid x:Name="grdActionBar" Grid.ColumnSpan="3"
               Grid.Row="0" Background="{StaticResource ActionBarBrush}" MouseDown="GrdActionBar_MouseDown">
             <Grid.ColumnDefinitions>
@@ -29,6 +28,5 @@
                      Click="CmdExit_Click" RenderTransformOrigin="0.5,0.5">
             </Button>
         </Grid>
-
     </Grid>
 </Window>

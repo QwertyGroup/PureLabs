@@ -14,14 +14,35 @@ using System.Windows.Shapes;
 
 namespace DLCollection.Street
 {
-    /// <summary>
-    /// Interaction logic for StreetMain.xaml
-    /// </summary>
     public partial class StreetMain : Window
     {
         public StreetMain()
         {
             InitializeComponent();
+            Loaded += (s, e) => OnLoaded();
+        }
+
+        private void OnLoaded()
+        {
+            // Can overlap
+            Topmost = false;
+        }
+
+        private void CmdExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void CmdBack_Click(object sender, RoutedEventArgs e)
+        {
+            var wind = new MainWindow() { Topmost = true };
+            wind.Show();
+            Close();
+        }
+
+        private void GrdActionBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

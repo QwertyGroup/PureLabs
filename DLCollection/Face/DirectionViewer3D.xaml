@@ -14,97 +14,64 @@
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <tools:TrackballDecorator Grid.Row="0">
-            <tools:Interactive3DDecorator>
-                <Viewport3D x:Name="vp3dViewPort">
-                    
-                    <!--Camera-->
-                    <Viewport3D.Camera>
-                        <PerspectiveCamera LookDirection="10,0,0"
+        <!--<tools:TrackballDecorator Grid.Row="0">-->
+        <tools:Interactive3DDecorator Grid.Row="0">
+            <Viewport3D x:Name="vp3dViewPort">
+
+                <!--Camera-->
+                <Viewport3D.Camera>
+                    <PerspectiveCamera x:Name="pcMainCamera"
+                                           LookDirection="10,0,0"
                                            UpDirection="0,1,0"
                                            Position="-10,0,0"
                                            NearPlaneDistance="1"
                                            FarPlaneDistance="100"
                                            FieldOfView="64">
-                            <PerspectiveCamera.Transform>
-                                <RotateTransform3D>
-                                    <RotateTransform3D.Rotation>
-                                        <AxisAngleRotation3D Angle="{Binding ElementName=sliderRotate, Path=Value}" Axis="0 1 0" />
-                                    </RotateTransform3D.Rotation>
-                                </RotateTransform3D>
-                            </PerspectiveCamera.Transform>
-                        </PerspectiveCamera>
-                    </Viewport3D.Camera>
-
-                    <!--Light1-->
-                    <ModelVisual3D>
-                        <ModelVisual3D.Content>
-                            <DirectionalLight Color="White" Direction="-2,-3,-1" />
-                        </ModelVisual3D.Content>
-                    </ModelVisual3D>
-
-                    <!--Light2-->
-                    <ModelVisual3D>
-                        <ModelVisual3D.Content>
-                            <DirectionalLight Color="White" Direction="2,1,1" />
-                        </ModelVisual3D.Content>
-                    </ModelVisual3D>
-
-
-                    <!--<ModelVisual3D>
-                        <ModelVisual3D.Content>
-                            <GeometryModel3D>
-                                <GeometryModel3D.Geometry>
-                                    <MeshGeometry3D Positions="-5,-5,-5 5,5,5"
-                                                        TriangleIndices="0 1 0"/>
-                                </GeometryModel3D.Geometry>
-                                <GeometryModel3D.Material>
-                                    <DiffuseMaterial Brush="Black" />
-                                </GeometryModel3D.Material>
-                            </GeometryModel3D>
-                        </ModelVisual3D.Content>
-                        <ModelVisual3D.Transform>
+                        <PerspectiveCamera.Transform>
                             <RotateTransform3D>
-                                -->
-                    <!--<RotateTransform3D.Rotation>
+                                <RotateTransform3D.Rotation>
                                     <AxisAngleRotation3D Angle="{Binding ElementName=sliderRotate, Path=Value}" Axis="0 1 0" />
-                                </RotateTransform3D.Rotation>-->
-                    <!--
+                                </RotateTransform3D.Rotation>
                             </RotateTransform3D>
-                        </ModelVisual3D.Transform>
-                    </ModelVisual3D>-->
+                        </PerspectiveCamera.Transform>
+                    </PerspectiveCamera>
+                </Viewport3D.Camera>
 
-                    <!--Photo-->
-                    <!--InteractiveVisual3D  используется для отображения обычных контролов на трехмерной поверхности (3DTools.dll)-->
-                    <tools:InteractiveVisual3D IsBackVisible="True">
-                        <tools:InteractiveVisual3D.Geometry>
-                            <MeshGeometry3D Positions="0,-5,5 0,-5,-5 0,5,5 0,5,-5"
+                <!--Light back-->
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <DirectionalLight Color="Blue" Direction="-5,0,0" />
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+
+                <!--Light front-->
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <DirectionalLight Color="White" Direction="5,0,0" />
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+
+                <!--Photo-->
+                <!--InteractiveVisual3D  используется для отображения обычных контролов на трехмерной поверхности (3DTools.dll)-->
+                <tools:InteractiveVisual3D IsBackVisible="True">
+                    <tools:InteractiveVisual3D.Geometry>
+                        <MeshGeometry3D Positions="0,-5,5 0,-5,-5 0,5,5 0,5,-5"
                                             TriangleIndices="0,2,1 2,3,1"
                                             TextureCoordinates="1,1 0,1 1,0 0,0" />
-                        </tools:InteractiveVisual3D.Geometry>
-                        <tools:InteractiveVisual3D.Visual>
-                            <Viewbox>
-                                <Image x:Name="imgPhoto"></Image>
-                            </Viewbox>
-                        </tools:InteractiveVisual3D.Visual>
+                    </tools:InteractiveVisual3D.Geometry>
+                    <tools:InteractiveVisual3D.Visual>
+                        <Viewbox>
+                            <Image x:Name="imgPhoto"></Image>
+                        </Viewbox>
+                    </tools:InteractiveVisual3D.Visual>
+                </tools:InteractiveVisual3D>
 
-                        <tools:InteractiveVisual3D.Transform>
-                            <RotateTransform3D>
-                                <!--<RotateTransform3D.Rotation>
-                                    <AxisAngleRotation3D Angle="{Binding ElementName=sliderRotate, Path=Value}"
-                                                             Axis="0 1 0" />
-                                </RotateTransform3D.Rotation>-->
-                            </RotateTransform3D>
-                        </tools:InteractiveVisual3D.Transform>
-
-                    </tools:InteractiveVisual3D>
-                    
-                </Viewport3D>
-            </tools:Interactive3DDecorator>
-        </tools:TrackballDecorator>
+            </Viewport3D>
+        </tools:Interactive3DDecorator>
+        <!--</tools:TrackballDecorator>-->
 
         <Slider x:Name="sliderRotate" Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                Maximum="90" Minimum="-90" Value="0" 
+                Maximum="105" Minimum="-105" Value="0" 
                 IsDirectionReversed="True"/>
     </Grid>
 </UserControl>

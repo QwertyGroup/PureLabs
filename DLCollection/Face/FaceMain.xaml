@@ -42,7 +42,7 @@
                    Text="Result2" Style="{StaticResource MainTextBlockStyle}" 
                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock x:Name="tbResult2" Grid.Row="1" Grid.Column="2" 
-                   Text="Result3" Style="{StaticResource MainTextBlockStyle}" 
+                   Text="Validation Unit" Style="{StaticResource MainTextBlockStyle}" 
                    HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Grid x:Name="grdContainer0"
               Grid.Row="2" Grid.Column="0"

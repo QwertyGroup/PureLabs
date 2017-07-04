@@ -30,7 +30,7 @@
             <TextBlock Text="∷ ∷ ∷ ∷ ∷ ∷" Style="{StaticResource MainTextBlockStyle}" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <Button x:Name="___No_Name_" Content="Street View" Style="{StaticResource MainButtonStyle}" FontSize="36" Padding="0,5,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="4,3" Click="StreetBtn_Click"></Button>
             <Button Content="Face Points" Style="{StaticResource MainButtonStyle}" FontSize="36" Padding="0,5,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="4,3" Click="FaceBtn_Click"></Button>
-            <Button Content="Topic 3?" Style="{StaticResource MainButtonStyle}" FontSize="36" Padding="0,5,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="4,3"></Button>
+            <Button Content="MS vs CV" Style="{StaticResource MainButtonStyle}" FontSize="36" Padding="0,5,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="4,3" Click="MSvsCVBtn_Click"></Button>
             <TextBlock Text="∷ ∷ ∷ ∷ ∷ ∷" Style="{StaticResource MainTextBlockStyle}" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text="∷ ∷ ∷" Style="{StaticResource MainTextBlockStyle}" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </StackPanel>

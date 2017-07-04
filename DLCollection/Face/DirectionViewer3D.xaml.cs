@@ -45,33 +45,68 @@ namespace DLCollection.Face
         {
             if (Photo != null)
                 imgPhoto.Source = ImageProcessing.ImageProcessingInstance.ConvertImageToBitmapImage(Photo);
-
-            DrawVector((414.7, 913.5, 1), (459.6, 1098.0, 1), (9, 85, 237), 4);
-            DrawVector((0, 0, 1), (PhotoWidth, PhotoHeight, 1), (140, 85, 237), 4);
-            DrawVector((0, 0, 0), (0, 0, 100), (240, 85, 0), 2);
         }
 
-        public void DrawVector((double W, double H, double Depth) point1, (double W, double H, double Depth) point2,
+        public void DashaTest()
+        {
+            // Eyes
+            DrawVector((913.5, 414.7, 1), (1098.0, 459.6, 1), (9, 85, 237), 2);
+            DrawVector((0, 0, 1), (PhotoWidth, PhotoHeight, 1), (140, 85, 237), 4);
+
+            // Corners
+            DrawVector((0, 0, 0), (0, 0, 50), (240, 85, 0), 2);
+            DrawVector((PhotoWidth, PhotoHeight, 0), (PhotoWidth, PhotoHeight, 100), (240, 85, 0), 2);
+            DrawVector((0, PhotoHeight, 0), (0, PhotoHeight, 50), (240, 85, 0), 2);
+            DrawVector((PhotoWidth, 0, 0), (PhotoWidth, 0, 50), (240, 85, 0), 2);
+
+            // Green PX x(W):400 y(H):800
+            DrawVector((400, 800, 15), (400, 800, 150), (30, 255, 30), 3);
+        }
+
+        public void DrawPoint((double W, double H, double Depth) point_in_px, (byte R, byte G, byte B) rgbColor, int thickness = 2)
+        {
+            var W = point_in_px.W;
+            var H = point_in_px.H;
+            var Depth = point_in_px.Depth;
+
+            DrawVector((W, H, Depth), (W, H, Depth + 6), rgbColor, thickness);                 // o - origin
+
+            //DrawVector((W, H + 1, Depth), (W, H + 1, Depth + 6), rgbColor, thickness);         //  #
+            //DrawVector((W - 1, H, Depth), (W - 1, H, Depth + 6), rgbColor, thickness);         // #o#
+            //DrawVector((W + 1, H, Depth), (W + 1, H, Depth + 6), rgbColor, thickness);         //  #
+            //DrawVector((W, H - 1, Depth), (W, H - 1, Depth + 6), rgbColor, thickness);
+
+            //DrawVector((W - 1, H + 1, Depth), (W - 1, H + 1, Depth + 6), rgbColor, thickness); // #o#
+            //DrawVector((W + 1, H + 1, Depth), (W + 1, H + 1, Depth + 6), rgbColor, thickness); // ooo
+            //DrawVector((W - 1, H - 1, Depth), (W - 1, H - 1, Depth + 6), rgbColor, thickness); // #o#
+            //DrawVector((W + 1, H - 1, Depth), (W + 1, H - 1, Depth + 6), rgbColor, thickness);
+
+            var sqSide = 2;
+            for (int i = -sqSide; i <= sqSide; i++) for (int j = -sqSide; j <= sqSide; j++)
+                    DrawVector((W + i, H + j, Depth), (W + i, H + j, Depth + 6), rgbColor, thickness);
+        }
+
+        public void DrawVector((double W, double H, double Depth) point1_in_px, (double W, double H, double Depth) point2_in_px,
             (byte R, byte G, byte B) rgbColor, int thickness = 2) // In photo resoulution
         {
             // reverse X coord 
-            point1.Depth = -point1.Depth;
-            point2.Depth = -point2.Depth;
+            point1_in_px.Depth = -point1_in_px.Depth;
+            point2_in_px.Depth = -point2_in_px.Depth;
 
             // adjust Y pos (reverse) 
-            point1.W = PhotoWidth - point1.W;
-            point2.W = PhotoWidth - point2.W;
+            point1_in_px.H = PhotoHeight - point1_in_px.H;
+            point2_in_px.H = PhotoHeight - point2_in_px.H;
 
             // Making points 
             var collection = new List<Point3D>
             {
-                new Point3D(ConvertPXto3dUnits(point1.Depth,Dimention.PhDepth),
-                ConvertPXto3dUnits(point1.W,Dimention.PhWidth),
-                ConvertPXto3dUnits(point1.H,Dimention.PhHeight)),
+                new Point3D(ConvertPXto3dUnits(point1_in_px.Depth,Dimention.PhDepth),
+                ConvertPXto3dUnits(point1_in_px.H,Dimention.PhHeight),
+                ConvertPXto3dUnits(point1_in_px.W,Dimention.PhWidth)),
 
-                new Point3D(ConvertPXto3dUnits(point2.Depth,Dimention.PhDepth),
-                ConvertPXto3dUnits(point2.W,Dimention.PhWidth),
-                ConvertPXto3dUnits(point2.H,Dimention.PhHeight)),
+                new Point3D(ConvertPXto3dUnits(point2_in_px.Depth,Dimention.PhDepth),
+                ConvertPXto3dUnits(point2_in_px.H,Dimention.PhHeight),
+                ConvertPXto3dUnits(point2_in_px.W,Dimention.PhWidth)),
             };
 
             // Drawing vector
