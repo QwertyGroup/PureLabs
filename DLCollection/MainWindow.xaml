@@ -17,7 +17,7 @@
         <Grid x:Name="grdActionBar" Grid.Row="0" Background="{StaticResource ActionBarBrush}" MouseDown="GrdActionBar_MouseDown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="620*"/>
-                <ColumnDefinition Width="120*"/>
+                <ColumnDefinition Width="160*"/>
             </Grid.ColumnDefinitions>
 
             <Button x:Name="cmdExit" Grid.Column="1" Style="{StaticResource CloseButtonStyle}" 
