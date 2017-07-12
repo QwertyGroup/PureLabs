@@ -119,11 +119,11 @@ namespace DLCollection.Face
             grdContainer.Children.Add(_viewer);
 
             // Render 3d graphics
-            Render3d();
+            Render3D();
 
         }
 
-        private void Render3d()
+        private void Render3D()
         {
             if (_msResult == null) return;
 
@@ -178,7 +178,7 @@ namespace DLCollection.Face
         private void DrawLandmark(Microsoft.ProjectOxford.Face.Contract.FeatureCoordinate point)
         {
             if (point == null) return;
-            _viewer.DrawPoint((point.X, point.Y, 0), (255, 255, 255), thickness: 1);
+            _viewer.DrawPoint2D((point.X, point.Y), (255, 255, 255), radius: 5);
         }
     }
 }

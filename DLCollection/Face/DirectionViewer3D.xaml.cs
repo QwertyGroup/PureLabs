@@ -50,26 +50,49 @@ namespace DLCollection.Face
         public void DashaTest()
         {
             // Eyes
-            DrawVector((913.5, 414.7, 1), (1098.0, 459.6, 1), (9, 85, 237), 2);
-            DrawVector((0, 0, 1), (PhotoWidth, PhotoHeight, 1), (140, 85, 237), 4);
+            DrawVector3D((913.5, 414.7, 1), (1098.0, 459.6, 1), (9, 85, 237), 2);
+            DrawVector3D((0, 0, 1), (PhotoWidth, PhotoHeight, 1), (140, 85, 237), 4);
 
             // Corners
-            DrawVector((0, 0, 0), (0, 0, 50), (240, 85, 0), 2);
-            DrawVector((PhotoWidth, PhotoHeight, 0), (PhotoWidth, PhotoHeight, 100), (240, 85, 0), 2);
-            DrawVector((0, PhotoHeight, 0), (0, PhotoHeight, 50), (240, 85, 0), 2);
-            DrawVector((PhotoWidth, 0, 0), (PhotoWidth, 0, 50), (240, 85, 0), 2);
+            DrawVector3D((0, 0, 0), (0, 0, 50), (240, 85, 0), 2);
+            DrawVector3D((PhotoWidth, PhotoHeight, 0), (PhotoWidth, PhotoHeight, 100), (240, 85, 0), 2);
+            DrawVector3D((0, PhotoHeight, 0), (0, PhotoHeight, 50), (240, 85, 0), 2);
+            DrawVector3D((PhotoWidth, 0, 0), (PhotoWidth, 0, 50), (240, 85, 0), 2);
 
             // Green PX x(W):400 y(H):800
-            DrawVector((400, 800, 15), (400, 800, 150), (30, 255, 30), 3);
+            DrawVector3D((400, 800, 15), (400, 800, 150), (30, 255, 30), 3);
+
+            // Test circle
+            DrawPoint2D((400, 800), (255, 255, 255), 30);
         }
 
-        public void DrawPoint((double W, double H, double Depth) point_in_px, (byte R, byte G, byte B) rgbColor, int thickness = 2)
+        public void DrawPoint2D((double W, double H) point_in_px, (byte R, byte G, byte B) rgbColor, int radius = 10)
+        {
+            cnvCanvasLayer.Loaded += (s, e) =>
+               {
+                   if (cnvCanvasLayer.ActualHeight == 0 || cnvCanvasLayer.ActualWidth == 0) return;
+
+                   var point = new Ellipse
+                   {
+                       Width = radius,
+                       Height = radius,
+                       Fill = new SolidColorBrush { Color = Color.FromRgb(rgbColor.R, rgbColor.G, rgbColor.B) }
+                   };
+
+                   Canvas.SetTop(point, point_in_px.H / PhotoHeight * cnvCanvasLayer.ActualHeight - (radius / 2));
+                   Canvas.SetLeft(point, point_in_px.W / PhotoWidth * cnvCanvasLayer.ActualWidth - (radius / 2));
+
+                   cnvCanvasLayer.Children.Add(point);
+               };
+        }
+
+        public void DrawPoint3D((double W, double H, double Depth) point_in_px, (byte R, byte G, byte B) rgbColor, int thickness = 2)
         {
             var W = point_in_px.W;
             var H = point_in_px.H;
             var Depth = point_in_px.Depth;
 
-            DrawVector((W, H, Depth), (W, H, Depth + 6), rgbColor, thickness);                 // o - origin
+            DrawVector3D((W, H, Depth), (W, H, Depth + 6), rgbColor, thickness);                 // o - origin
 
             //DrawVector((W, H + 1, Depth), (W, H + 1, Depth + 6), rgbColor, thickness);         //  #
             //DrawVector((W - 1, H, Depth), (W - 1, H, Depth + 6), rgbColor, thickness);         // #o#
@@ -83,10 +106,10 @@ namespace DLCollection.Face
 
             var sqSide = 2;
             for (int i = -sqSide; i <= sqSide; i++) for (int j = -sqSide; j <= sqSide; j++)
-                    DrawVector((W + i, H + j, Depth), (W + i, H + j, Depth + 6), rgbColor, thickness);
+                    DrawVector3D((W + i, H + j, Depth), (W + i, H + j, Depth + 6), rgbColor, thickness);
         }
 
-        public void DrawVector((double W, double H, double Depth) point1_in_px, (double W, double H, double Depth) point2_in_px,
+        public void DrawVector3D((double W, double H, double Depth) point1_in_px, (double W, double H, double Depth) point2_in_px,
             (byte R, byte G, byte B) rgbColor, int thickness = 2) // In photo resoulution
         {
             // reverse X coord 

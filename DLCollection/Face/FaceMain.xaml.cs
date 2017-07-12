@@ -39,8 +39,7 @@ namespace DLCollection.Face
             var unit2 = new CompositeVisionUnit();
             grdContainer1.Children.Add(unit2);
 
-
-            //grdContainer1.Children.Add(new LoadingCIrcle());
+            //grdContainer1.Children.Add(new LoadingCircle());
             //grdContainer2.Children.Add(new LoadingPicture { Padding = new Thickness(0, 15, 0, 30) });
         }
 

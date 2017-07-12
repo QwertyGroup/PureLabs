@@ -10,14 +10,14 @@
 
     <Grid Background="{StaticResource PrimaryBgBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="20*"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="335*"/>
         </Grid.RowDefinitions>
 
         <Grid x:Name="grdActionBar" Grid.Row="0" Background="{StaticResource ActionBarBrush}" MouseDown="GrdActionBar_MouseDown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="620*"/>
-                <ColumnDefinition Width="160*"/>
+                <ColumnDefinition Width="140"/>
             </Grid.ColumnDefinitions>
 
             <Button x:Name="cmdExit" Grid.Column="1" Style="{StaticResource CloseButtonStyle}" 
@@ -28,9 +28,9 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" MinWidth="320">
             <TextBlock Text="∷ ∷ ∷" Style="{StaticResource MainTextBlockStyle}" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text="∷ ∷ ∷ ∷ ∷ ∷" Style="{StaticResource MainTextBlockStyle}" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-            <Button x:Name="___No_Name_" Content="Street View" Style="{StaticResource MainButtonStyle}" FontSize="36" Padding="0,5,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="4,3" Click="StreetBtn_Click"></Button>
-            <Button Content="Face Points" Style="{StaticResource MainButtonStyle}" FontSize="36" Padding="0,5,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="4,3" Click="FaceBtn_Click"></Button>
             <Button Content="MS vs CV" Style="{StaticResource MainButtonStyle}" FontSize="36" Padding="0,5,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="4,3" Click="MSvsCVBtn_Click"></Button>
+            <Button Content="Face Points" Style="{StaticResource MainButtonStyle}" FontSize="36" Padding="0,5,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="4,3" Click="FaceBtn_Click"></Button>
+            <Button Content="Street View" Style="{StaticResource MainButtonStyle}" FontSize="36" Padding="0,5,0,6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="4,3" Click="StreetBtn_Click"></Button>
             <TextBlock Text="∷ ∷ ∷ ∷ ∷ ∷" Style="{StaticResource MainTextBlockStyle}" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
             <TextBlock Text="∷ ∷ ∷" Style="{StaticResource MainTextBlockStyle}" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </StackPanel>

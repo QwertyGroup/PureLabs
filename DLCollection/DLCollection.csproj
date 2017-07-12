@@ -82,8 +82,14 @@
     <Compile Include="Face\DirectionViewer3D.xaml.cs">
       <DependentUpon>DirectionViewer3D.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MSvsCV\FaceDetectPage.xaml.cs">
+      <DependentUpon>FaceDetectPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MSvsCV\MSvsCVMain.xaml.cs">
       <DependentUpon>MSvsCVMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MSvsCV\SourceSelectorPage.xaml.cs">
+      <DependentUpon>SourceSelectorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Street\StreetMain.xaml.cs">
       <DependentUpon>StreetMain.xaml</DependentUpon>
@@ -115,7 +121,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MSvsCV\FaceDetectPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MSvsCV\MSvsCVMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MSvsCV\SourceSelectorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

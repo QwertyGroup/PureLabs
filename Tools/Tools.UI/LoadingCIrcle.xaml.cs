@@ -18,9 +18,9 @@ namespace Tools.UI
     /// <summary>
     /// Interaction logic for LoadingCIrcle.xaml
     /// </summary>
-    public partial class LoadingCIrcle : UserControl
+    public partial class LoadingCircle : UserControl
     {
-        public LoadingCIrcle()
+        public LoadingCircle()
         {
             InitializeComponent();
         }

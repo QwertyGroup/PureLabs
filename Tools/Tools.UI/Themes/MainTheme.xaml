@@ -8,6 +8,38 @@
     <Color x:Key="BackButtonColor0">#2980b9</Color>
     <Color x:Key="BackButtonColor1">#2ecc71</Color>
 
+    <Color x:Key="photoBackColor">#ecf0f1</Color>
+    <Color x:Key="photoUnpressedColor">#bdc3c7</Color>
+    <Color x:Key="photoHoverColor">#3498db</Color>
+    <Color x:Key="photoPressedColor">#2ecc71</Color>
+
+    <!-- =Geomerty= -->
+    <Path x:Key="TakePhotoIcon" Stretch="Uniform"
+          Fill="White" Opacity="0.25" 
+          Data="M9.4 10.5l4.77-8.26C13.47 2.09 12.75 2 12 2c-2.4 0-4.6.85-6.32 2.25l3.66 6.35.06-.1zM21.54 9c-.92-2.92-3.15-5.26-6-6.34L11.88 9h9.66zm.26 1h-7.49l.29.5 4.76 8.25C21 16.97 22 14.61 22 12c0-.69-.07-1.35-.2-2zM8.54 12l-3.9-6.75C3.01 7.03 2 9.39 2 12c0 .69.07 1.35.2 2h7.49l-1.15-2zm-6.08 3c.92 2.92 3.15 5.26 6 6.34L12.12 15H2.46zm11.27 0l-3.9 6.76c.7.15 1.42.24 2.17.24 2.4 0 4.6-.85 6.32-2.25l-3.66-6.35-.93 1.6z" RenderTransformOrigin="0.5,0.5">
+        <Path.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Path.RenderTransform>
+    </Path>
+
+    <Path x:Key="ImageIconBlack" Stretch="Uniform"
+          Fill="Black" Opacity="0.70" 
+          Data="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z" RenderTransformOrigin="0.5,0.5">
+        <Path.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Path.RenderTransform>
+    </Path>
+
     <!-- =Generic Brushes= -->
     <SolidColorBrush x:Key="PrimaryBgBrush" Color="#ecf0f1"/>
     <SolidColorBrush x:Key="PrimaryFgBrush" Color="Green"/>
@@ -25,6 +57,11 @@
     <SolidColorBrush x:Key="FocusedBtnTextBrush" Color="#FF1E1E1E"/>
     <SolidColorBrush x:Key="selectedbgBrush" Color="#69939393"/>
     <SolidColorBrush x:Key="unabledBrush" Color="#cecece"/>
+
+    <SolidColorBrush x:Key="photoBackBrush" Color="{StaticResource photoBackColor}"/>
+    <SolidColorBrush x:Key="photoUnpressedBrush" Color="{StaticResource photoUnpressedColor}"/>
+    <SolidColorBrush x:Key="photoHoverBrush" Color="{StaticResource photoHoverColor}"/>
+    <SolidColorBrush x:Key="photoPressedBrush" Color="{StaticResource photoPressedColor}"/>
 
     <!-- =Control Templates= -->
 
@@ -167,6 +204,117 @@
                                 Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
                                 To="{StaticResource BackButtonColor0}"
                                 Duration="0:0:0.4"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Round Button -->
+    <Style x:Key="RoundButtonStyle" TargetType="Button">
+        <Style.Setters>
+            <Setter Property="Background" Value="{StaticResource photoBackBrush}"></Setter>
+            <Setter Property="Foreground" Value="{StaticResource photoUnpressedBrush}"></Setter>
+            <Setter Property="BorderBrush" Value="Transparent"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid RenderTransformOrigin="0.5,0.5">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"></RowDefinition>
+                                <RowDefinition Height="8*"></RowDefinition>
+                                <RowDefinition Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                                <ColumnDefinition Width="8*"></ColumnDefinition>
+                                <ColumnDefinition Width="1*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Ellipse Grid.ColumnSpan="3" Grid.RowSpan="3"
+                                Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Background}"/>
+
+                            <Ellipse Grid.Column="1" Grid.Row="1" 
+                                     Stroke="{TemplateBinding BorderBrush}" Fill="{TemplateBinding Foreground}"/>
+
+                            <ContentControl HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <!--<ContentPresenter Grid.Column="1" Grid.Row="1"
+                                              HorizontalAlignment="Center" VerticalAlignment="Center" Content="{StaticResource TakePhotoIcon}"/>-->
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation
+                                Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                To="{StaticResource photoHoverColor}"
+                                Duration="0:0:0.12"/>
+
+                            <DoubleAnimation Storyboard.TargetProperty="(Button.RenderTransform).(TransformGroup.Children)[0].ScaleX"
+                                             To="1.1" Duration="0:0:0.08"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Button.RenderTransform).(TransformGroup.Children)[0].ScaleY"
+                                             To="1.1" Duration="0:0:0.08"/>
+
+                            <!--<DoubleAnimation Storyboard.TargetProperty="(Button.Content).RenderTransform.(TransformGroup.Children)[0].ScaleX"
+                                             To="0" Duration="0:0:0.1"/>-->
+                            <!--<DoubleAnimation Storyboard.TargetProperty="(ContentPresenter.RenderTransform).(TransformGroup.Children)[0].ScaleY"
+                                             To="1" Duration="0:0:0.1"/>-->
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation
+                                Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                To="{StaticResource photoUnpressedColor}"
+                                Duration="0:0:0.2"/>
+
+                            <DoubleAnimation Storyboard.TargetProperty="(Button.RenderTransform).(TransformGroup.Children)[0].ScaleX"
+                                             To="1" Duration="0:0:0.1"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Button.RenderTransform).(TransformGroup.Children)[0].ScaleY"
+                                             To="1" Duration="0:0:0.1"/>
+
+                            <!--<DoubleAnimation Storyboard.TargetProperty="(Button.RenderTransform).(TransformGroup.Children)[2].Angle"
+                                             To="0" Duration="0:0:0.1"/>-->
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Click">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation
+                                Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"
+                                To="{StaticResource photoPressedColor}"
+                                Duration="0:0:0.1" AutoReverse="True"/>
+
+                            <DoubleAnimation Storyboard.TargetProperty="(Button.RenderTransform).(TransformGroup.Children)[0].ScaleX"
+                                             To="1.3" Duration="0:0:0.05" AutoReverse="True"/>
+                            <DoubleAnimation Storyboard.TargetProperty="(Button.RenderTransform).(TransformGroup.Children)[0].ScaleY"
+                                             To="1.3" Duration="0:0:0.05" AutoReverse="True"/>
+
                         </Storyboard>
                     </BeginStoryboard>
                 </EventTrigger.Actions>

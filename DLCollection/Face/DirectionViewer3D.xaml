@@ -61,7 +61,10 @@
                     </tools:InteractiveVisual3D.Geometry>
                     <tools:InteractiveVisual3D.Visual>
                         <Viewbox>
-                            <Image x:Name="imgPhoto"></Image>
+                            <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                <Image x:Name="imgPhoto"/>
+                                <Canvas x:Name="cnvCanvasLayer" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                            </Grid>
                         </Viewbox>
                     </tools:InteractiveVisual3D.Visual>
                 </tools:InteractiveVisual3D>

@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="Tools.UI.CameraV"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Tools.UI"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid x:Name="grdMainContainer" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+        <Border Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center"
+                BorderBrush="#BF000000" BorderThickness="3,1" Visibility="{Binding Visibility, ElementName=imgPreview}" >
+            <Image x:Name="imgPreview" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+
+        <Canvas x:Name="cnvCanvas" Margin="20" 
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                Width="{Binding ActualWidth, ElementName=imgPreview, Mode=OneWay}" 
+                Height="{Binding ActualHeight, ElementName=imgPreview, Mode=OneWay}"/>
+
+        <Button x:Name="cmdCapture" HorizontalAlignment="Right" VerticalAlignment="Center"
+                Style="{StaticResource RoundButtonStyle}"
+                Width="60" Height="60" Margin="10,0,40,0"/>
+
+    </Grid>
+</UserControl>
