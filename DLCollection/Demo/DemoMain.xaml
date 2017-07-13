@@ -1,0 +1,34 @@
+﻿<Window x:Class="DLCollection.Demo.DemoMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DLCollection.Demo"
+        mc:Ignorable="d" Style="{StaticResource DefaultWindowStyle}"
+        Title="DemoMain" Height="300" Width="300">
+
+    <Grid Background="{StaticResource PrimaryBgBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="335*"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="grdActionBar" Grid.ColumnSpan="3"
+              Grid.Row="0" Background="{StaticResource ActionBarBrush}" MouseDown="GrdActionBar_MouseDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="140"/>
+                <ColumnDefinition Width="620*"/>
+                <ColumnDefinition Width="140"/>
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="cmdBack" Grid.Column="0" Style="{StaticResource BackButtonStyle}" 
+                     Click="CmdBack_Click" RenderTransformOrigin="0.5,0.5">
+            </Button>
+
+            <Button x:Name="cmdExit" Grid.Column="2" Style="{StaticResource CloseButtonStyle}" 
+                     Click="CmdExit_Click" RenderTransformOrigin="0.5,0.5">
+            </Button>
+        </Grid>
+
+    </Grid>
+</Window>
