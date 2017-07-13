@@ -49,14 +49,15 @@ namespace DLCollection.MSvsCV
             ProcessImageEmguCv("Cascades/haarcascade_frontalface_alt2.xml", imgRes4);
         }
 
+        private FaceRecognition.Core.EmguCvAPIs.FaceTools _faceTools =
+             new FaceRecognition.Core.EmguCvAPIs.FaceTools();
         private void ProcessImageEmguCv(string cascadePath, System.Windows.Controls.Image imgRes)
         {
             var img = _img;
-            var frame = ImageToMat(img);
-            var faceTools = new FaceRecognition.Core.EmguCvAPIs.FaceTools();
+            var frame = _faceTools.ImageToMat(img);
 
             var cascade = new CascadeClassifier(cascadePath);
-            var faces = faceTools.FindObjByCascade(frame, cascade);
+            var faces = _faceTools.FindObjByCascade(frame, cascade);
             DrawRects(faces, frame);
 
             Dispatcher.Invoke(() =>
@@ -72,7 +73,7 @@ namespace DLCollection.MSvsCV
             var faces =
                 await FaceRecognition.Core.MicrosoftAPIs.ComparationAPI.Commands.CommandsInstance.DetectFace(img);
 
-            Mat frame = ImageToMat(img);
+            Mat frame = _faceTools.ImageToMat(img);
             DrawRects(faces.Select(f =>
             new System.Drawing.Rectangle(
                 f.FaceRectangle.Left, f.FaceRectangle.Top, f.FaceRectangle.Width,
@@ -84,16 +85,10 @@ namespace DLCollection.MSvsCV
             });
         }
 
-        private static void DrawRects(List<System.Drawing.Rectangle> rects, Mat frame)
+        private void DrawRects(List<System.Drawing.Rectangle> rects, Mat frame)
         {
             foreach (var rect in rects)
                 CvInvoke.Rectangle(frame, rect, new Bgr(System.Drawing.Color.LimeGreen).MCvScalar, thickness: 3);
-        }
-
-        private static Mat ImageToMat(System.Drawing.Image img)
-        {
-            return BitmapSourceConvert.ToMat(
-                ImageProcessing.ImageProcessingInstance.ConvertImageToBitmapImage(img));
         }
     }
 }

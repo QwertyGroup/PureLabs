@@ -124,6 +124,12 @@
     <None Include="CoreDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tools.Libs\Tools.Libs.csproj">
+      <Project>{B3CD5677-2DD2-4573-AB32-3854D64B8F86}</Project>
+      <Name>Tools.Libs</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\Emgu.CV.3.2.0.2721\build\Emgu.CV.targets" Condition="Exists('..\..\packages\Emgu.CV.3.2.0.2721\build\Emgu.CV.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

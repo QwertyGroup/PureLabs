@@ -1,4 +1,5 @@
 ﻿using Emgu.CV;
+using Emgu.CV.WPF;
 
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,12 @@ namespace FaceRecognition.Core.EmguCvAPIs
 {
     public class FaceTools
     {
+        public Mat ImageToMat(System.Drawing.Image img)
+        {
+            return BitmapSourceConvert.ToMat(
+                ImageProcessing.ImageProcessingInstance.ConvertImageToBitmapImage(img));
+        }
+
         public List<Rectangle> FindObjByCascade(Mat inputImg, CascadeClassifier cascade)
         {
             var faces = new List<Rectangle>();
@@ -27,7 +34,7 @@ namespace FaceRecognition.Core.EmguCvAPIs
                     //Detect the faces  from the gray scale image and store the locations as rectangle
                     //The first dimensional is the channel
                     //The second dimension is the index of the rectangle in the specific channel                     
-                    Rectangle[] facesDetected = cascade.DetectMultiScale(ugray, 1.02, 5);
+                    Rectangle[] facesDetected = cascade.DetectMultiScale(ugray, 1.02, 7, new Size(50, 50));
 
                     faces.AddRange(facesDetected);
 

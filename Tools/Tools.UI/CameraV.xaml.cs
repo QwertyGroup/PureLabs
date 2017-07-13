@@ -185,7 +185,9 @@ namespace Tools.UI
 
         public void KillCapture()
         {
+            if (_capt == null) return;
             _capt.Stop();
+            _capt = null;
         }
     }
 }
