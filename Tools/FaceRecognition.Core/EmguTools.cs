@@ -3,6 +3,7 @@ using Emgu.CV.WPF;
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,8 +19,19 @@ namespace FaceRecognition.Core.EmguCvAPIs
                 ImageProcessing.ImageProcessingInstance.ConvertImageToBitmapImage(img));
         }
 
-        public List<Rectangle> FindObjByCascade(Mat inputImg, CascadeClassifier cascade)
+        public Image MatToImage(Mat mat)
         {
+            return mat.Bitmap;
+        }
+
+        public TimeSpan LastFindObjProcessTime { get; set; } = TimeSpan.FromSeconds(0);
+        private Stopwatch _sw = new Stopwatch();
+        public List<Rectangle> FindObjByCascade(Mat inputImg, CascadeClassifier cascade,
+            double scaleFactor = 1.02, int minNeighbors = 7,
+            Size minSize = default(Size), Size maxSize = default(Size))
+        {
+            _sw.Reset();
+            _sw.Start();
             var faces = new List<Rectangle>();
 
             using (cascade)
@@ -34,7 +46,8 @@ namespace FaceRecognition.Core.EmguCvAPIs
                     //Detect the faces  from the gray scale image and store the locations as rectangle
                     //The first dimensional is the channel
                     //The second dimension is the index of the rectangle in the specific channel                     
-                    Rectangle[] facesDetected = cascade.DetectMultiScale(ugray, 1.02, 7, new Size(50, 50));
+                    Rectangle[] facesDetected = cascade.DetectMultiScale(ugray, scaleFactor: scaleFactor,
+                        minNeighbors: minNeighbors, minSize: minSize, maxSize: maxSize);
 
                     faces.AddRange(facesDetected);
 
@@ -60,6 +73,9 @@ namespace FaceRecognition.Core.EmguCvAPIs
                     //}
                 }
             }
+
+            _sw.Stop();
+            LastFindObjProcessTime = _sw.Elapsed;
 
             return faces;
         }

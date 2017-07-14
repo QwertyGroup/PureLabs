@@ -1,6 +1,8 @@
 ﻿using Emgu.CV;
 using Emgu.CV.WPF;
 
+using FaceRecognition.Core;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -69,7 +71,17 @@ namespace Tools.UI
                 //_grabbedFrame = _capt.QueryFrame();
 
                 if (!_grabbedFrame.IsEmpty)
+                {
+                    ImageProcessing.ImageProcessingInstance.SaveDirectory = "Gallery/";
+                    ImageProcessing.ImageProcessingInstance.SaveImageToFile(new Func<string>(() =>
+                    {
+                        var files = ImageProcessing.ImageProcessingInstance.GetFilesInSaveDir(ImageProcessing.FileNameSetting.WithoutExtension);
+                        if (files.Count == 0) return 0.ToString();
+                        return (Convert.ToInt32(files.Last()) + 1).ToString();
+                    }).Invoke(), _grabbedFrame.Bitmap, System.Drawing.Imaging.ImageFormat.Jpeg);
+
                     OnCapture?.Invoke(this, _grabbedFrame.Bitmap);
+                }
             };
 
             try

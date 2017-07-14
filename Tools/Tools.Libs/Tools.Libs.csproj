@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="BitmapSourceConverter.cs" />
     <Compile Include="DetectFace.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="FindPedestrian.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
