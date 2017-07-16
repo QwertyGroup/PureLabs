@@ -347,6 +347,18 @@
         </Style.Setters>
     </Style>
 
+    <!-- Text box -->
+    <Style x:Key="MainTextBoxStyle" TargetType="TextBox">
+        <Style.Setters>
+            <Setter Property="Background" Value="{StaticResource TransparentBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource UnfocusedBtnTextBrush}"/>
+            <Setter Property="FontFamily" Value="Square721 BT"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+            <Setter Property="Padding" Value="0,4,0,5"/>
+        </Style.Setters>
+    </Style>
+
     <!-- Default Window -->
     <Style x:Key="DefaultWindowStyle" TargetType="Window">
         <Style.Setters>

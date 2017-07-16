@@ -25,6 +25,7 @@ namespace DLCollection.Demo
                 brdSettings.Visibility = Visibility.Visible;
                 cntSourceSelector.Visibility = Visibility.Collapsed;
                 cntApplySettings.Visibility = Visibility.Collapsed;
+                cntDetectMethodParams.Visibility = Visibility.Collapsed;
             };
         }
 
@@ -33,6 +34,7 @@ namespace DLCollection.Demo
             brdSettings.Visibility = Visibility.Collapsed;
             cntSourceSelector.Visibility = Visibility.Visible;
             cntApplySettings.Visibility = Visibility.Visible;
+            cntDetectMethodParams.Visibility = Visibility.Visible;
         }
     }
 }

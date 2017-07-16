@@ -5,11 +5,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DLCollection.Demo"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="700">
-    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+             d:DesignHeight="400" d:DesignWidth="800">
+    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Background="#FFE3E3E3">
+
+        <!-- FindObjByCascade Parameters -->
+        <StackPanel x:Name="cntDetectMethodParams"
+            VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+            <Rectangle Fill="Black" HorizontalAlignment="Stretch" Height="1"></Rectangle>
+            <TextBlock Style="{StaticResource MainTextBlockStyle}" Margin="25,3,20,3" 
+                       TextAlignment="Right" Text="Detect Method Parameters" />
+            <TextBlock Style="{StaticResource MainTextBlockStyle}" 
+                       FontSize="18" Text="Select cascade" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Style="{StaticResource MainButtonStyle}" Content="Default" 
+                        Margin="4,2" Padding="20,4" FontSize="20"></Button>
+                <Button Style="{StaticResource MainButtonStyle}" Content="Alt 1"
+                        Margin="4,2" Padding="20,4" FontSize="20"></Button>
+                <Button Style="{StaticResource MainButtonStyle}" Content="Alt 2" 
+                        Margin="4,2" Padding="20,4" FontSize="20"></Button>
+            </StackPanel>
+        </StackPanel>
 
         <!-- Source selector -->
-        <StackPanel x:Name="cntSourceSelector" 
+        <StackPanel x:Name="cntSourceSelector"
               VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
             <Rectangle Fill="Black" HorizontalAlignment="Stretch" Height="1"></Rectangle>
             <TextBlock Style="{StaticResource MainTextBlockStyle}" Margin="25,3,20,3" 
@@ -53,7 +71,7 @@
                     HorizontalAlignment="Right" Padding="20,4" FontSize="24" />
             </StackPanel>
         </StackPanel>
-        
+
         <!-- Display settings button -->
         <Border x:Name="brdSettings" Background="{StaticResource FocusedBtnTextBrush}"
                 VerticalAlignment="Bottom" HorizontalAlignment="Stretch" >
