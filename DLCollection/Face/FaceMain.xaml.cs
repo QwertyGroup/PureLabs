@@ -65,7 +65,6 @@ namespace DLCollection.Face
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                throw;
             }
         }
     }

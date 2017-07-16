@@ -20,6 +20,13 @@ namespace DLCollection.Demo
         public DemoMain()
         {
             InitializeComponent();
+            Loaded += (s, e) => OnLoaded();
+        }
+
+        private void OnLoaded()
+        {
+            // Can overlap
+            Topmost = false;
         }
 
         private void CmdExit_Click(object sender, RoutedEventArgs e)
@@ -43,7 +50,6 @@ namespace DLCollection.Demo
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                throw;
             }
         }
     }

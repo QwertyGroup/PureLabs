@@ -44,7 +44,6 @@ namespace DLCollection
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                throw;
             }
         }
 

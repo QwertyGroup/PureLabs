@@ -50,7 +50,6 @@ namespace DLCollection.Street
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-                throw;
             }
         }
     }
