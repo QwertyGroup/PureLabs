@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DLCollection.Demo"
         mc:Ignorable="d" Style="{StaticResource DefaultWindowStyle}"
-        Title="DemoMain" Height="400" Width="700">
+        Title="DemoMain" Height="720" Width="1280">
 
     <Grid Background="{StaticResource PrimaryBgBrush}">
         <Grid.RowDefinitions>
@@ -32,10 +32,17 @@
 
         <Grid x:Name="grdMainContainer" Grid.Row="1" 
               VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <TextBlock Style="{StaticResource MainTextBlockStyle}" FontSize="32"
-                       VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center">
+
+            <Frame x:Name="frViewerFrame" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></Frame>
+
+            <TextBlock Style="{StaticResource MainTextBlockStyle}" FontSize="12" Margin="0,0,3,0"
+                       VerticalAlignment="Top" HorizontalAlignment="Right" TextAlignment="Center">
                 This is Pure Demo
             </TextBlock>
+
+            <Button Style="{StaticResource MainButtonStyle}" Content="Load Viewer" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center" 
+                    FontSize="36" Padding="20,5" Click="CmdLoadViewer_Click"></Button>
         </Grid>
 
     </Grid>

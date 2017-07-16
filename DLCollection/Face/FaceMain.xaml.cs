@@ -51,6 +51,7 @@ namespace DLCollection.Face
 
         private void CmdBack_Click(object sender, RoutedEventArgs e)
         {
+            GC.Collect();
             var wind = new MainWindow() { Topmost = true };
             wind.Show();
             Close();

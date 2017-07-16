@@ -199,7 +199,9 @@ namespace Tools.UI
         {
             if (_capt == null) return;
             _capt.Stop();
+            //_capt.Dispose();
             _capt = null;
+            GC.Collect();
         }
     }
 }

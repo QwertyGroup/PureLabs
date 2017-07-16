@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="DLCollection.Demo.SettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DLCollection.Demo"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="700">
+    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+
+        <!-- Source selector -->
+        <StackPanel x:Name="cntSourceSelector" 
+              VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
+            <Rectangle Fill="Black" HorizontalAlignment="Stretch" Height="1"></Rectangle>
+            <TextBlock Style="{StaticResource MainTextBlockStyle}" Margin="25,3,20,3" 
+                       TextAlignment="Right" Text="NSS (New Source Selector)"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,12">
+                <Button x:Name="cmdCapture" Style="{StaticResource MainButtonStyle}"
+                    Width="200" Height="45" Grid.Column="2">
+                    <StackPanel Orientation="Horizontal">
+                        <ContentPresenter Content="{StaticResource TakePhotoIconBlack}" 
+                                      Width="28" Height="28" Margin="0,0,6,0"/>
+                        <TextBlock Style="{StaticResource MainTextBlockStyle}" FontSize="24" 
+                               TextAlignment="Center" VerticalAlignment="Center">Capture</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <TextBlock x:Name="tbOr" Style="{StaticResource MainTextBlockStyle}" Grid.Column="1"
+                       Text="or" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       FontSize="22" TextAlignment="Center" Margin="15,0"/>
+
+                <Button x:Name="cmdBrowse" Style="{StaticResource MainButtonStyle}"
+                    Width="200" Height="45" Grid.Column="2">
+                    <StackPanel Orientation="Horizontal">
+                        <ContentPresenter Content="{StaticResource ImageIconBlack}" 
+                                      Width="28" Height="28" Margin="0,0,6,0"/>
+                        <TextBlock Style="{StaticResource MainTextBlockStyle}" FontSize="24" 
+                               TextAlignment="Center" VerticalAlignment="Center">Browse...</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Apply settings-->
+        <StackPanel x:Name="cntApplySettings" Margin="0,0,0,7">
+            <Rectangle Fill="Black" HorizontalAlignment="Stretch" Height="1"></Rectangle>
+            <TextBlock Style="{StaticResource MainTextBlockStyle}" Margin="25,3,20,3" 
+                       TextAlignment="Right" Text="Apply Settings"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,10,3" HorizontalAlignment="Right">
+                <Button Style="{StaticResource MainButtonStyle}" Content="CANCEL" 
+                    HorizontalAlignment="Right" Padding="20,4" FontSize="24" Margin="0,0,10,0"/>
+                <Button Style="{StaticResource MainButtonStyle}" Content="APPLY" 
+                    HorizontalAlignment="Right" Padding="20,4" FontSize="24" />
+            </StackPanel>
+        </StackPanel>
+        
+        <!-- Display settings button -->
+        <Border x:Name="brdSettings" Background="{StaticResource FocusedBtnTextBrush}"
+                VerticalAlignment="Bottom" HorizontalAlignment="Stretch" >
+            <Button Style="{StaticResource MainButtonStyle}" Content="Settings" 
+                    Foreground="{StaticResource PrimaryBgBrush}"
+                    FontSize="20" Click="CmdSettings_Click"></Button>
+        </Border>
+
+    </StackPanel>
+</UserControl>

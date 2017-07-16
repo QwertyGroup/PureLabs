@@ -76,8 +76,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Demo\CaptureViewerPage.xaml.cs">
+      <DependentUpon>CaptureViewerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Demo\DemoMain.xaml.cs">
       <DependentUpon>DemoMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Demo\SettingsControl.xaml.cs">
+      <DependentUpon>SettingsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Face\CompositeVisionUnit.xaml.cs">
       <DependentUpon>CompositeVisionUnit.xaml</DependentUpon>
@@ -97,7 +103,15 @@
     <Compile Include="Street\StreetMain.xaml.cs">
       <DependentUpon>StreetMain.xaml</DependentUpon>
     </Compile>
+    <Page Include="Demo\CaptureViewerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Demo\DemoMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Demo\SettingsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -36,6 +36,7 @@ namespace DLCollection.Demo
 
         private void CmdBack_Click(object sender, RoutedEventArgs e)
         {
+            GC.Collect();
             var wind = new MainWindow() { Topmost = true };
             wind.Show();
             Close();
@@ -51,6 +52,12 @@ namespace DLCollection.Demo
             {
                 Debug.WriteLine(ex.Message);
             }
+        }
+
+        private void CmdLoadViewer_Click(object sender, RoutedEventArgs e)
+        {
+            (sender as Button).Visibility = Visibility.Hidden;
+            frViewerFrame.Content = new CaptureViewerPage();
         }
     }
 }
