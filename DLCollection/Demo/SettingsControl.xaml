@@ -6,39 +6,79 @@
              xmlns:local="clr-namespace:DLCollection.Demo"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="800">
-    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Background="#FFE3E3E3">
+    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Background="{StaticResource DirtyWhiteBrush}">
+
+        <!-- Settings Title -->
+        <TextBlock x:Name="tbSettingsTitle" Style="{StaticResource MainTextBlockInverseStyle}"
+                   Text="Settings" TextAlignment="Center" FontSize="20"
+                   VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
 
         <!-- FindObjByCascade Parameters -->
         <StackPanel x:Name="cntDetectMethodParams"
             VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
-            <Rectangle Fill="Black" HorizontalAlignment="Stretch" Height="1"></Rectangle>
+            <!--<Rectangle Fill="{StaticResource FocusedBtnTextBrush}" HorizontalAlignment="Stretch" Height="1"></Rectangle>-->
             <TextBlock Style="{StaticResource MainTextBlockStyle}" Margin="25,3,20,3" 
                        TextAlignment="Right" Text="Detect Method Parameters" />
-            <TextBlock Style="{StaticResource MainTextBlockStyle}" 
-                       FontSize="18" Text="Select cascade" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button Style="{StaticResource MainButtonStyle}" Content="Default" 
-                        Margin="4,2" Padding="20,4" FontSize="20"></Button>
-                <Button Style="{StaticResource MainButtonStyle}" Content="Alt 1"
-                        Margin="4,2" Padding="20,4" FontSize="20"></Button>
-                <Button Style="{StaticResource MainButtonStyle}" Content="Alt 2" 
-                        Margin="4,2" Padding="20,4" FontSize="20"></Button>
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- First column -->
+                <TextBlock Style="{StaticResource MainTextBlockStyle}"
+                       FontSize="18" Text="Select cascade:" Margin="10,0,0,0" VerticalAlignment="Top" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,27,0,5" VerticalAlignment="Center">
+                    <Button x:Name="cmdD0" Style="{StaticResource MainButtonStyle}" Content="D0" 
+                        Margin="4,2" Padding="20,4" FontSize="22" ToolTip="Default" Click="CmdD0_Click"></Button>
+                    <Button x:Name="cmdA1" Style="{StaticResource MainButtonStyle}" Content="A1"
+                        Margin="4,2" Padding="20,4" FontSize="22" ToolTip="Alternative 1" Click="CmdA1_Click"></Button>
+                    <Button x:Name="cmdA2" Style="{StaticResource MainButtonStyle}" Content="A2" 
+                        Margin="4,2" Padding="20,4" FontSize="22" ToolTip="Alternative 2" Click="CmdA2_Click"></Button>
+                </StackPanel>
+
+                <!-- Second column -->
+                <TextBlock Grid.Column="1" Style="{StaticResource MainTextBlockStyle}"
+                           FontSize="18" Text="Accuracy:" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                <StackPanel Grid.Column="1" Margin="10,30,0,7">
+                    <TextBox Style="{StaticResource MainTextBoxStyle}"
+                          HorizontalAlignment="Left" VerticalAlignment="Top"
+                          Width="250" Height="30"></TextBox>
+                    <TextBox Style="{StaticResource MainTextBoxStyle}"
+                          HorizontalAlignment="Left" VerticalAlignment="Top"
+                          Margin="0,10,0,0"
+                          Width="250" Height="30"></TextBox>
+                </StackPanel>
+
+                <!-- Third column -->
+                <TextBlock Grid.Column="2" Style="{StaticResource MainTextBlockStyle}"
+                           FontSize="18" Text="Size:" Margin="10,0,0,0" VerticalAlignment="Top"/>
+                <StackPanel Grid.Column="2" Margin="10,30,0,7">
+                    <TextBox Style="{StaticResource MainTextBoxStyle}"
+                          HorizontalAlignment="Left" VerticalAlignment="Top"
+                          Width="250" Height="30"></TextBox>
+                    <TextBox Style="{StaticResource MainTextBoxStyle}"
+                          HorizontalAlignment="Left" VerticalAlignment="Top"
+                          Margin="0,10,0,0"
+                          Width="250" Height="30"></TextBox>
+                </StackPanel>
+            </Grid>
         </StackPanel>
 
         <!-- Source selector -->
         <StackPanel x:Name="cntSourceSelector"
               VerticalAlignment="Bottom" HorizontalAlignment="Stretch">
-            <Rectangle Fill="Black" HorizontalAlignment="Stretch" Height="1"></Rectangle>
+            <Rectangle Fill="{StaticResource FocusedBtnTextBrush}" HorizontalAlignment="Stretch" Height="1"></Rectangle>
             <TextBlock Style="{StaticResource MainTextBlockStyle}" Margin="25,3,20,3" 
                        TextAlignment="Right" Text="NSS (New Source Selector)"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,12">
                 <Button x:Name="cmdCapture" Style="{StaticResource MainButtonStyle}"
-                    Width="200" Height="45" Grid.Column="2">
+                    Width="200" Height="45" Grid.Column="2" Click="CmdCapture_Click">
                     <StackPanel Orientation="Horizontal">
-                        <ContentPresenter Content="{StaticResource TakePhotoIconBlack}" 
+                        <ContentPresenter x:Name="cmdCaptureIcon" Content="{StaticResource TakePhotoIconBlack}" 
                                       Width="28" Height="28" Margin="0,0,6,0"/>
-                        <TextBlock Style="{StaticResource MainTextBlockStyle}" FontSize="24" 
+                        <TextBlock x:Name="cmdCaptureText" Style="{StaticResource MainTextBlockStyle}" FontSize="24" 
                                TextAlignment="Center" VerticalAlignment="Center">Capture</TextBlock>
                     </StackPanel>
                 </Button>
@@ -48,37 +88,56 @@
                        FontSize="22" TextAlignment="Center" Margin="15,0"/>
 
                 <Button x:Name="cmdBrowse" Style="{StaticResource MainButtonStyle}"
-                    Width="200" Height="45" Grid.Column="2">
+                    Width="200" Height="45" Grid.Column="2"  Click="CmdBrowse_Click">
                     <StackPanel Orientation="Horizontal">
-                        <ContentPresenter Content="{StaticResource ImageIconBlack}" 
+                        <ContentPresenter x:Name="cmdBrowseIcon" Content="{StaticResource ImageIconBlack}" 
                                       Width="28" Height="28" Margin="0,0,6,0"/>
-                        <TextBlock Style="{StaticResource MainTextBlockStyle}" FontSize="24" 
+                        <TextBlock x:Name="cmdBrowseText" Style="{StaticResource MainTextBlockStyle}" FontSize="24" 
                                TextAlignment="Center" VerticalAlignment="Center">Browse...</TextBlock>
                     </StackPanel>
                 </Button>
             </StackPanel>
         </StackPanel>
 
-        <!-- Apply settings-->
+        <!-- Apply settings -->
         <StackPanel x:Name="cntApplySettings" Margin="0,0,0,7">
-            <Rectangle Fill="Black" HorizontalAlignment="Stretch" Height="1"></Rectangle>
+            <Rectangle Fill="{StaticResource FocusedBtnTextBrush}" HorizontalAlignment="Stretch" Height="1"></Rectangle>
             <TextBlock Style="{StaticResource MainTextBlockStyle}" Margin="25,3,20,3" 
                        TextAlignment="Right" Text="Apply Settings"/>
             <StackPanel Orientation="Horizontal" Margin="0,0,10,3" HorizontalAlignment="Right">
-                <Button Style="{StaticResource MainButtonStyle}" Content="CANCEL" 
-                    HorizontalAlignment="Right" Padding="20,4" FontSize="24" Margin="0,0,10,0"/>
-                <Button Style="{StaticResource MainButtonStyle}" Content="APPLY" 
-                    HorizontalAlignment="Right" Padding="20,4" FontSize="24" />
+                <Button x:Name="cmdCancel" Style="{StaticResource MainButtonStyle}" Content="CANCEL" 
+                        HorizontalAlignment="Right" Padding="20,4" FontSize="24" Margin="0,0,5,0" Click="CmdCancel_Click"/>
+                <Button x:Name="cmdApply" Style="{StaticResource MainButtonInverseStyle}" Content="APPLY" 
+                        HorizontalAlignment="Right" Padding="20,4" FontSize="24" Margin="5,0,0,0"
+                        Width="{Binding ActualWidth, ElementName=cmdCancel, Mode=OneWay}" Click="CmdApply_Click" />
             </StackPanel>
         </StackPanel>
 
         <!-- Display settings button -->
-        <Border x:Name="brdSettings" Background="{StaticResource FocusedBtnTextBrush}"
-                VerticalAlignment="Bottom" HorizontalAlignment="Stretch" >
-            <Button Style="{StaticResource MainButtonStyle}" Content="Settings" 
-                    Foreground="{StaticResource PrimaryBgBrush}"
-                    FontSize="20" Click="CmdSettings_Click"></Button>
-        </Border>
+        <Button  x:Name="cmdOpenSettings" Content="Settings" 
+                 VerticalAlignment="Bottom" HorizontalAlignment="Stretch" FontSize="20"
+                 Click="CmdSettings_Click" RenderTransformOrigin="0.5,1">
+            <Button.Style>
+                <Style BasedOn="{StaticResource MainButtonInverseStyle}" TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="RenderTransform" >
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter Property="RenderTransform" >
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
 
     </StackPanel>
 </UserControl>

@@ -85,6 +85,7 @@
     <Compile Include="Demo\SettingsControl.xaml.cs">
       <DependentUpon>SettingsControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Demo\SettingsControlProperties.cs" />
     <Compile Include="Face\CompositeVisionUnit.xaml.cs">
       <DependentUpon>CompositeVisionUnit.xaml</DependentUpon>
     </Compile>

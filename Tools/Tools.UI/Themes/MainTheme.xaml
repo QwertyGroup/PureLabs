@@ -13,6 +13,8 @@
     <Color x:Key="photoHoverColor">#3498db</Color>
     <Color x:Key="photoPressedColor">#2ecc71</Color>
 
+    <Color x:Key="DirtyWhiteColor">#FFE3E3E3</Color>
+
     <!-- =Geomerty= -->
     <Path x:Key="TakePhotoIcon" Stretch="Uniform"
           Fill="White" Opacity="0.25" 
@@ -40,6 +42,19 @@
         </Path.RenderTransform>
     </Path>
 
+    <Path x:Key="TakePhotoIconWhite" Stretch="Uniform"
+          Fill="White" Opacity="0.75" 
+          Data="M9.4 10.5l4.77-8.26C13.47 2.09 12.75 2 12 2c-2.4 0-4.6.85-6.32 2.25l3.66 6.35.06-.1zM21.54 9c-.92-2.92-3.15-5.26-6-6.34L11.88 9h9.66zm.26 1h-7.49l.29.5 4.76 8.25C21 16.97 22 14.61 22 12c0-.69-.07-1.35-.2-2zM8.54 12l-3.9-6.75C3.01 7.03 2 9.39 2 12c0 .69.07 1.35.2 2h7.49l-1.15-2zm-6.08 3c.92 2.92 3.15 5.26 6 6.34L12.12 15H2.46zm11.27 0l-3.9 6.76c.7.15 1.42.24 2.17.24 2.4 0 4.6-.85 6.32-2.25l-3.66-6.35-.93 1.6z" RenderTransformOrigin="0.5,0.5">
+        <Path.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform ScaleX="0.95" ScaleY="0.95"/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Path.RenderTransform>
+    </Path>
+
     <Path x:Key="ImageIconBlack" Stretch="Uniform"
           Fill="Black" Opacity="0.70" 
           Data="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z" RenderTransformOrigin="0.5,0.5">
@@ -52,6 +67,20 @@
             </TransformGroup>
         </Path.RenderTransform>
     </Path>
+
+    <Path x:Key="ImageIconWhite" Stretch="Uniform"
+          Fill="White" Opacity="0.70" 
+          Data="M22 16V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2zm-11-4l2.03 2.71L16 11l4 5H8l3-4zM2 6v14c0 1.1.9 2 2 2h14v-2H4V6H2z" RenderTransformOrigin="0.5,0.5">
+        <Path.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform ScaleX="0.85" ScaleY="0.85"/>
+                <SkewTransform/>
+                <RotateTransform/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Path.RenderTransform>
+    </Path>
+
 
     <!-- =Generic Brushes= -->
     <SolidColorBrush x:Key="PrimaryBgBrush" Color="#ecf0f1"/>
@@ -75,6 +104,8 @@
     <SolidColorBrush x:Key="photoUnpressedBrush" Color="{StaticResource photoUnpressedColor}"/>
     <SolidColorBrush x:Key="photoHoverBrush" Color="{StaticResource photoHoverColor}"/>
     <SolidColorBrush x:Key="photoPressedBrush" Color="{StaticResource photoPressedColor}"/>
+
+    <SolidColorBrush x:Key="DirtyWhiteBrush" Color="{StaticResource DirtyWhiteColor}"/>
 
     <!-- =Control Templates= -->
 
@@ -102,23 +133,27 @@
 
     <!-- =Styles= -->
 
-    <!-- Main button -->
-    <Style x:Key="MainButtonStyle" TargetType="Button">
+    <!-- Main button BASE -->
+    <Style x:Key="MainButtonBase" TargetType="Button">
         <Style.Setters>
-            <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
-            <Setter Property="Foreground" Value="{DynamicResource UnfocusedBtnTextBrush}"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource UnfocusedBtnTextBrush}"/>
+            <Setter Property="Background" Value="{StaticResource TransparentBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource UnfocusedBtnTextBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource UnfocusedBtnTextBrush}"/>
             <Setter Property="FontFamily" Value="Square721 BT"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
             <Setter Property="Padding" Value="0,4,0,5"/>
             <Setter Property="Template" Value="{StaticResource MainButtonTemplate}"/>
         </Style.Setters>
+    </Style>
+
+    <!-- Main button -->
+    <Style x:Key="MainButtonStyle" TargetType="Button" BasedOn="{StaticResource MainButtonBase}">
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource FocusedBtnTextBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource FocusedBtnTextBrush}"/>
-                <Setter Property="Background" Value="{DynamicResource selectedbgBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource FocusedBtnTextBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource FocusedBtnTextBrush}"/>
+                <Setter Property="Background" Value="{StaticResource selectedbgBrush}"/>
                 <Setter Property="RenderTransform" >
                     <Setter.Value>
                         <ScaleTransform ScaleX="1.03" ScaleY="1.03"/>
@@ -126,9 +161,9 @@
                 </Setter>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="False">
-                <Setter Property="Foreground" Value="{DynamicResource UnfocusedBtnTextBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource UnfocusedBtnTextBrush}"/>
-                <Setter Property="Background" Value="{DynamicResource TransparentBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource UnfocusedBtnTextBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource UnfocusedBtnTextBrush}"/>
+                <Setter Property="Background" Value="{StaticResource TransparentBrush}"/>
                 <Setter Property="RenderTransform" >
                     <Setter.Value>
                         <ScaleTransform ScaleX="1" ScaleY="1"/>
@@ -136,12 +171,37 @@
                 </Setter>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{DynamicResource unabledBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource unabledBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource unabledBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource unabledBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource UnfocusedBtnTextBrush}"/>
-                <Setter Property="BorderBrush" Value="{DynamicResource UnfocusedBtnTextBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource UnfocusedBtnTextBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource UnfocusedBtnTextBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Main button Inverse -->
+    <Style x:Key="MainButtonInverseStyle" TargetType="Button" BasedOn="{StaticResource MainButtonBase}">
+        <Style.Setters>
+            <Setter Property="Background" Value="{StaticResource FocusedBtnTextBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource DirtyWhiteBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource FocusedBtnTextBrush}"/>
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="RenderTransform" >
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1.03" ScaleY="1.03"/>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="False">
+                <Setter Property="RenderTransform" >
+                    <Setter.Value>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                    </Setter.Value>
+                </Setter>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -149,7 +209,7 @@
     <!-- Close button -->
     <Style x:Key="CloseButtonStyle" TargetType="Button">
         <Style.Setters>
-            <Setter Property="Background" Value="{DynamicResource CloseButtonBrush0}"/>
+            <Setter Property="Background" Value="{StaticResource CloseButtonBrush0}"/>
             <Setter Property="Margin" Value="0"/>
             <Setter Property="RenderTransformOrigin" Value="1,0"/>
             <Setter Property="Padding" Value="0"/>
@@ -188,7 +248,7 @@
     <!-- Back button -->
     <Style x:Key="BackButtonStyle" TargetType="Button">
         <Style.Setters>
-            <Setter Property="Background" Value="{DynamicResource CloseButtonBrush0}"/>
+            <Setter Property="Background" Value="{StaticResource CloseButtonBrush0}"/>
             <Setter Property="Margin" Value="0"/>
             <Setter Property="RenderTransformOrigin" Value="1,0"/>
             <Setter Property="Padding" Value="0"/>
@@ -336,14 +396,25 @@
     </Style>
 
     <!-- Text block -->
-    <Style x:Key="MainTextBlockStyle" TargetType="TextBlock">
+
+    <Style x:Key="MainTextBlockStyleBase" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Square721 BT"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+        <Setter Property="Padding" Value="0,4,0,5"/>
+    </Style>
+
+    <Style x:Key="MainTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource MainTextBlockStyleBase}">
         <Style.Setters>
             <Setter Property="Background" Value="{StaticResource TransparentBrush}"/>
             <Setter Property="Foreground" Value="{StaticResource UnfocusedBtnTextBrush}"/>
-            <Setter Property="FontFamily" Value="Square721 BT"/>
-            <Setter Property="FontSize" Value="18"/>
-            <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
-            <Setter Property="Padding" Value="0,4,0,5"/>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="MainTextBlockInverseStyle" TargetType="TextBlock" BasedOn="{StaticResource MainTextBlockStyleBase}">
+        <Style.Setters>
+            <Setter Property="Background" Value="{StaticResource FocusedBtnTextBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource DirtyWhiteBrush}"/>
         </Style.Setters>
     </Style>
 
@@ -352,6 +423,8 @@
         <Style.Setters>
             <Setter Property="Background" Value="{StaticResource TransparentBrush}"/>
             <Setter Property="Foreground" Value="{StaticResource UnfocusedBtnTextBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource UnfocusedBtnTextBrush}"/>
+            <Setter Property="BorderThickness" Value="2,1,2,1"/>
             <Setter Property="FontFamily" Value="Square721 BT"/>
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
