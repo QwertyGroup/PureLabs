@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace DLCollection.Demo
 {
@@ -21,5 +16,25 @@ namespace DLCollection.Demo
 
         public Size MinSize { get; set; }
         public Size MaxSize { get; set; }
+
+        public SettingsControlProperties() { }
+        public SettingsControlProperties(SettingsControlProperties settings)
+        {
+            CascadeType = settings.CascadeType;
+
+            SourceType = settings.SourceType;
+            BrowsePath = settings.BrowsePath;
+
+            ScaleFactor = settings.ScaleFactor;
+            MinNeighbors = settings.MinNeighbors;
+
+            MinSize = settings.MinSize;
+            MaxSize = settings.MaxSize;
+        }
+
+        public SettingsControlProperties Copy()
+        {
+            return new SettingsControlProperties(this);
+        }
     }
 }
