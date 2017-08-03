@@ -21,20 +21,33 @@ namespace DLCollection.Demo
         public CaptureViewerPage()
         {
             InitializeComponent();
+
+            //cSettings.OnNewSettingsVerified += (s, e) =>
+            //{
+            //    if (e.Result != SettingsControl.SettingsReturnResult.Apply) return;
+
+            //    lbDebug.Items.Add(e.Settings.CascadeType);
+
+            //    lbDebug.Items.Add(e.Settings.SourceType);
+            //    lbDebug.Items.Add(e.Settings.BrowsePath);
+
+            //    lbDebug.Items.Add(e.Settings.ScaleFactor);
+            //    lbDebug.Items.Add(e.Settings.MinNeighbors);
+
+            //    lbDebug.Items.Add(e.Settings.MinSize);
+            //    lbDebug.Items.Add(e.Settings.MaxSize);
+
+            //    lbDebug.Items.Add(string.Empty);
+            //};
+
             cSettings.OnNewSettingsVerified += (s, e) =>
             {
-                lbDebug.Items.Add(e.CascadeType);
+                cProcessing.Start(e.Settings);
+            };
 
-                lbDebug.Items.Add(e.SourceType);
-                lbDebug.Items.Add(e.BrowsePath);
-
-                lbDebug.Items.Add(e.ScaleFactor);
-                lbDebug.Items.Add(e.MinNeighbors);
-
-                lbDebug.Items.Add(e.MinSize);
-                lbDebug.Items.Add(e.MaxSize);
-
-                lbDebug.Items.Add(string.Empty);
+            cSettings.OnSettingsOpened += (s, e) =>
+            {
+                cProcessing.Stop();
             };
         }
     }

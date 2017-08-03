@@ -9,7 +9,8 @@
       Title="CaptureViewerPage">
 
     <Grid>
-        <ListBox x:Name="lbDebug" ></ListBox>
+        <!--<ListBox x:Name="lbDebug" ></ListBox>-->
+        <local:ProcessingControl x:Name="cProcessing"/>
         <local:SettingsControl x:Name="cSettings"/>
     </Grid>
 </Page>

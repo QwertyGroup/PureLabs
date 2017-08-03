@@ -16,7 +16,7 @@
         <!-- Settings Title -->
         <TextBlock x:Name="tbSettingsTitle" Style="{StaticResource MainTextBlockInverseStyle}"
                    Text="Settings" TextAlignment="Center" FontSize="20"
-                   VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                   VerticalAlignment="Center" HorizontalAlignment="Stretch" MouseUp="TbSettingsTitle_MouseUp"/>
 
         <!-- FindObjByCascade Parameters -->
         <StackPanel x:Name="cntDetectMethodParams"

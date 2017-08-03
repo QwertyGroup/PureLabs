@@ -60,6 +60,7 @@
     <Compile Include="DetectFace.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FindPedestrian.cs" />
+    <Compile Include="MotionDetection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

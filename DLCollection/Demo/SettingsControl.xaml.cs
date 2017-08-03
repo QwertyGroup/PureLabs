@@ -44,6 +44,7 @@ namespace DLCollection.Demo
         private void CmdSettings_Click(object sender, RoutedEventArgs e)
         {
             ExpandSettings();
+            OnSettingsOpened?.Invoke(this, new EventArgs());
         }
 
         private void CollapseSettings()
@@ -73,7 +74,7 @@ namespace DLCollection.Demo
             _tempSettings.MaxSize = MaxSizeUI;
             Settings = _tempSettings;
             CollapseSettings();
-            OnNewSettingsVerified?.Invoke(this, Settings);
+            OnNewSettingsVerified?.Invoke(this, (SettingsReturnResult.Apply, Settings));
         }
 
         private void CmdD0_Click(object sender, RoutedEventArgs e)
@@ -154,6 +155,8 @@ namespace DLCollection.Demo
             }
 
             CollapseSettings();
+
+            OnNewSettingsVerified?.Invoke(this, (SettingsReturnResult.Cancel, Settings));
         }
 
         private void CmdBrowse_Click(object sender, RoutedEventArgs e)
@@ -202,12 +205,21 @@ namespace DLCollection.Demo
             cmdBrowseText.Style = FindResource("MainTextBlockStyle") as Style;
         }
 
+        private void TbSettingsTitle_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            CmdCancel_Click(null, null);
+        }
+
         // props/fields
         public SettingsControlProperties Settings { get; set; } = new SettingsControlProperties();
         private SettingsControlProperties _tempSettings;
 
+        // enums
+        public enum SettingsReturnResult { Cancel, Apply }
+
         // events
-        public event EventHandler<SettingsControlProperties> OnNewSettingsVerified;
+        public event EventHandler<(SettingsReturnResult Result, SettingsControlProperties Settings)> OnNewSettingsVerified;
+        public event EventHandler OnSettingsOpened;
 
         // dps
         public double ScaleFactorUI
@@ -254,7 +266,5 @@ namespace DLCollection.Demo
         // Using a DependencyProperty as the backing store for MaxSIzeUI.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty MaxSIzeUIProperty =
             DependencyProperty.Register("MaxSizeUI", typeof(System.Drawing.Size), typeof(SettingsControl), new PropertyMetadata(new System.Drawing.Size(50, 50)));
-
-
     }
 }
